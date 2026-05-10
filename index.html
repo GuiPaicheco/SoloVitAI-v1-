@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SoloVitAI — Inteligência no Campo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===== CANVAS PARTÍCULAS ===== -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- ===== CURSOR PERSONALIZADO ===== -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-ring"></div>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-logo">
+      <span class="logo-icon"><i class="fa-solid fa-seedling"></i></span>
+      <span class="logo-text">Solo<span class="accent">Vit</span>AI</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#plataforma">Plataforma</a></li>
+      <li><a href="#funcionalidades">Funcionalidades</a></li>
+      <li><a href="#acessibilidade">Acessibilidade</a></li>
+      <li><a href="#chatbot">Chatbot</a></li>
+      <li><a href="#dados">Dados</a></li>
+      <li><a href="#equipe">Equipe</a></li>
+    </ul>
+    <button class="nav-cta">Explorar</button>
+    <button class="hamburger" id="hamburger"><i class="fa-solid fa-bars"></i></button>
+  </nav>
+
+  <!-- ===== MOBILE MENU ===== -->
+  <div class="mobile-menu" id="mobile-menu">
+    <ul>
+      <li><a href="#sobre" class="mobile-link">Sobre</a></li>
+      <li><a href="#plataforma" class="mobile-link">Plataforma</a></li>
+      <li><a href="#funcionalidades" class="mobile-link">Funcionalidades</a></li>
+      <li><a href="#acessibilidade" class="mobile-link">Acessibilidade</a></li>
+      <li><a href="#chatbot" class="mobile-link">Chatbot</a></li>
+      <li><a href="#dados" class="mobile-link">Dados</a></li>
+      <li><a href="#equipe" class="mobile-link">Equipe</a></li>
+    </ul>
+  </div>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="hero">
+    <div class="hero-grid-bg"></div>
+    <div class="hero-orbs">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-badge reveal-up">
+        <span class="badge-dot"></span>
+        <span>Sistema em Operação · Tempo Real</span>
+      </div>
+
+      <h1 class="hero-title reveal-up delay-1">
+        <span class="title-line">Solo<em>Vit</em>AI</span>
+      </h1>
+
+      <p class="hero-slogan reveal-up delay-2">
+        Inteligência Artificial transformando<br />o manejo agrícola.
+      </p>
+
+      <p class="hero-sub reveal-up delay-3">
+        Monitoramento inteligente do solo em tempo real.<br />
+        Dados complexos traduzidos em decisões simples para o produtor rural.
+      </p>
+
+      <div class="hero-btns reveal-up delay-4">
+        <a href="#plataforma" class="btn-primary">
+          <i class="fa-solid fa-circle-play"></i> Ver Plataforma
+        </a>
+        <a href="#sobre" class="btn-ghost">
+          Saiba mais <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <!-- Métricas flutuantes -->
+      <div class="hero-metrics reveal-up delay-5">
+        <div class="metric-card">
+          <span class="metric-val" data-target="98">0</span><span>%</span>
+          <span class="metric-label">Precisão IA</span>
+        </div>
+        <div class="metric-sep"></div>
+        <div class="metric-card">
+          <span class="metric-val" data-target="24">0</span><span>h</span>
+          <span class="metric-label">Monitoramento</span>
+        </div>
+        <div class="metric-sep"></div>
+        <div class="metric-card">
+          <span class="metric-val" data-target="12">0</span><span>+</span>
+          <span class="metric-label">Parâmetros</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dashboard flutuante -->
+    <div class="hero-dashboard reveal-right">
+      <div class="dash-header">
+        <span class="dash-title"><i class="fa-solid fa-chart-line"></i> Monitor Central</span>
+        <span class="dash-live"><span class="live-dot"></span>AO VIVO</span>
+      </div>
+      <div class="dash-sensors">
+        <div class="sensor-row">
+          <span class="sensor-icon soil"><i class="fa-solid fa-droplet"></i></span>
+          <div class="sensor-info">
+            <span class="sensor-name">Umidade do Solo</span>
+            <div class="sensor-bar"><div class="sensor-fill" style="--w:72%; --color: #00ff88"></div></div>
+          </div>
+          <span class="sensor-val green">72%</span>
+        </div>
+        <div class="sensor-row">
+          <span class="sensor-icon temp"><i class="fa-solid fa-temperature-half"></i></span>
+          <div class="sensor-info">
+            <span class="sensor-name">Temperatura</span>
+            <div class="sensor-bar"><div class="sensor-fill" style="--w:58%; --color: #00cfff"></div></div>
+          </div>
+          <span class="sensor-val blue">24°C</span>
+        </div>
+        <div class="sensor-row">
+          <span class="sensor-icon ph"><i class="fa-solid fa-flask"></i></span>
+          <div class="sensor-info">
+            <span class="sensor-name">pH do Solo</span>
+            <div class="sensor-bar"><div class="sensor-fill" style="--w:65%; --color: #a78bfa"></div></div>
+          </div>
+          <span class="sensor-val purple">6.5</span>
+        </div>
+        <div class="sensor-row">
+          <span class="sensor-icon n"><i class="fa-solid fa-leaf"></i></span>
+          <div class="sensor-info">
+            <span class="sensor-name">Nitrogênio (N)</span>
+            <div class="sensor-bar"><div class="sensor-fill" style="--w:80%; --color: #00ff88"></div></div>
+          </div>
+          <span class="sensor-val green">Alto</span>
+        </div>
+      </div>
+      <div class="dash-ai-tip">
+        <i class="fa-solid fa-robot"></i>
+        <span>IA: Solo em condição ideal para plantio de soja.</span>
+      </div>
+    </div>
+
+    <div class="hero-scroll-hint">
+      <span>Role para explorar</span>
+      <div class="scroll-arrow"></div>
+    </div>
+  </section>
+
+  <!-- ===== SOBRE O PROJETO ===== -->
+  <section class="sobre" id="sobre">
+    <div class="container">
+      <div class="section-label reveal-up">SOBRE O PROJETO</div>
+      <h2 class="section-title reveal-up delay-1">
+        O intérprete inteligente<br /><span class="accent">do seu solo</span>
+      </h2>
+      <p class="section-desc reveal-up delay-2">
+        O SoloVitAI não apenas coleta dados — ele os interpreta. Transforma linguagem técnica 
+        em ações práticas e acessíveis para qualquer produtor rural.
+      </p>
+
+      <div class="sobre-grid">
+        <div class="sobre-card reveal-up delay-1">
+          <div class="sc-icon"><i class="fa-solid fa-brain"></i></div>
+          <h3>Interpreta</h3>
+          <p>Transforma dados técnicos do solo em linguagem simples e ações práticas para o produtor.</p>
+        </div>
+        <div class="sobre-card reveal-up delay-2">
+          <div class="sc-icon"><i class="fa-solid fa-bolt"></i></div>
+          <h3>Decide</h3>
+          <p>Auxilia a tomada de decisão agrícola com recomendações baseadas em IA e dados reais.</p>
+        </div>
+        <div class="sobre-card reveal-up delay-3">
+          <div class="sc-icon"><i class="fa-solid fa-wifi"></i></div>
+          <h3>Conecta</h3>
+          <p>Integra sensores via Bluetooth e centraliza todas as informações em um único painel.</p>
+        </div>
+        <div class="sobre-card reveal-up delay-4">
+          <div class="sc-icon"><i class="fa-solid fa-users"></i></div>
+          <h3>Simplifica</h3>
+          <p>Interface projetada para todos — da gestão moderna ao produtor sem familiaridade digital.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PLATAFORMA ===== -->
+  <section class="plataforma" id="plataforma">
+    <div class="container">
+      <div class="section-label reveal-up">PROCESSAMENTO & GESTÃO</div>
+      <h2 class="section-title reveal-up delay-1">
+        Aplicação <span class="accent">Solo Vital</span>
+      </h2>
+      <p class="section-desc reveal-up delay-2">
+        Central de monitoramento agrícola inteligente. Dados recebidos via Bluetooth, 
+        organizados automaticamente, analisados por IA.
+      </p>
+
+      <!-- Dashboard Central -->
+      <div class="platform-dashboard reveal-up delay-3">
+        <div class="pd-sidebar">
+          <div class="pd-nav-item active"><i class="fa-solid fa-gauge-high"></i><span>Dashboard</span></div>
+          <div class="pd-nav-item"><i class="fa-solid fa-droplet"></i><span>Umidade</span></div>
+          <div class="pd-nav-item"><i class="fa-solid fa-leaf"></i><span>Nutrientes</span></div>
+          <div class="pd-nav-item"><i class="fa-solid fa-chart-bar"></i><span>Histórico</span></div>
+          <div class="pd-nav-item"><i class="fa-solid fa-robot"></i><span>IA Assist</span></div>
+          <div class="pd-status">
+            <span class="pd-bt"><i class="fa-brands fa-bluetooth"></i> BT Conectado</span>
+          </div>
+        </div>
+        <div class="pd-main">
+          <div class="pd-top">
+            <div class="pd-kpi">
+              <span class="kpi-label">Solo Ativo</span>
+              <span class="kpi-val green">Saudável</span>
+            </div>
+            <div class="pd-kpi">
+              <span class="kpi-label">Última Leitura</span>
+              <span class="kpi-val">Agora</span>
+            </div>
+            <div class="pd-kpi">
+              <span class="kpi-label">Alerta IA</span>
+              <span class="kpi-val blue">Nenhum</span>
+            </div>
+            <div class="pd-kpi">
+              <span class="kpi-label">Hectares</span>
+              <span class="kpi-val">4 Ativos</span>
+            </div>
+          </div>
+
+          <!-- Gráfico animado -->
+          <div class="pd-chart-area">
+            <div class="chart-label">Evolução da Umidade — Últimas 12h</div>
+            <svg class="animated-chart" viewBox="0 0 600 140" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#00ff88" stop-opacity="0.4"/>
+                  <stop offset="100%" stop-color="#00ff88" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <path class="chart-area" d="M0,100 C50,90 100,60 150,70 C200,80 250,40 300,50 C350,60 400,30 450,45 C500,60 550,35 600,40 L600,140 L0,140 Z" fill="url(#chartGrad)"/>
+              <path class="chart-line" d="M0,100 C50,90 100,60 150,70 C200,80 250,40 300,50 C350,60 400,30 450,45 C500,60 550,35 600,40" fill="none" stroke="#00ff88" stroke-width="2.5"/>
+              <!-- Pontos -->
+              <circle cx="150" cy="70" r="4" fill="#00ff88" class="chart-dot"/>
+              <circle cx="300" cy="50" r="4" fill="#00ff88" class="chart-dot"/>
+              <circle cx="450" cy="45" r="4" fill="#00ff88" class="chart-dot"/>
+              <circle cx="600" cy="40" r="5" fill="#fff" stroke="#00ff88" stroke-width="2" class="chart-dot"/>
+            </svg>
+            <div class="chart-labels">
+              <span>00h</span><span>02h</span><span>04h</span><span>06h</span>
+              <span>08h</span><span>10h</span><span>12h</span>
+            </div>
+          </div>
+
+          <!-- Mini cards de nutrientes -->
+          <div class="pd-nutrients">
+            <div class="nut-card">
+              <span class="nut-sym">N</span>
+              <span class="nut-name">Nitrogênio</span>
+              <div class="nut-bar"><div style="width:80%; background:#00ff88"></div></div>
+              <span class="nut-status ok">Ideal</span>
+            </div>
+            <div class="nut-card">
+              <span class="nut-sym">P</span>
+              <span class="nut-name">Fósforo</span>
+              <div class="nut-bar"><div style="width:55%; background:#00cfff"></div></div>
+              <span class="nut-status ok">Bom</span>
+            </div>
+            <div class="nut-card">
+              <span class="nut-sym">K</span>
+              <span class="nut-name">Potássio</span>
+              <div class="nut-bar"><div style="width:40%; background:#f59e0b"></div></div>
+              <span class="nut-status warn">Baixo</span>
+            </div>
+            <div class="nut-card">
+              <span class="nut-sym">pH</span>
+              <span class="nut-name">Acidez</span>
+              <div class="nut-bar"><div style="width:65%; background:#a78bfa"></div></div>
+              <span class="nut-status ok">Neutro</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FUNCIONALIDADES ===== -->
+  <section class="funcionalidades" id="funcionalidades">
+    <div class="container">
+      <div class="section-label reveal-up">FUNCIONALIDADES</div>
+      <h2 class="section-title reveal-up delay-1">
+        Tudo que você precisa<br /><span class="accent">em um só lugar</span>
+      </h2>
+
+      <div class="func-grid">
+        <div class="func-card reveal-up delay-1">
+          <div class="fc-glow"></div>
+          <div class="fc-icon"><i class="fa-solid fa-satellite-dish"></i></div>
+          <h3>Monitoramento Inteligente</h3>
+          <ul>
+            <li><i class="fa-solid fa-check"></i> Níveis de nutrientes N, P, K</li>
+            <li><i class="fa-solid fa-check"></i> Análise de água e umidade</li>
+            <li><i class="fa-solid fa-check"></i> Condições ideais para cultivo</li>
+            <li><i class="fa-solid fa-check"></i> Alertas automáticos de anomalia</li>
+          </ul>
+        </div>
+
+        <div class="func-card reveal-up delay-2">
+          <div class="fc-glow glow-blue"></div>
+          <div class="fc-icon blue"><i class="fa-solid fa-file-waveform"></i></div>
+          <h3>Relatórios Personalizados</h3>
+          <ul>
+            <li><i class="fa-solid fa-check"></i> Dicas de manejo geradas por IA</li>
+            <li><i class="fa-solid fa-check"></i> Recomendações agrícolas</li>
+            <li><i class="fa-solid fa-check"></i> Análises históricas organizadas</li>
+            <li><i class="fa-solid fa-check"></i> Exportação em PDF e CSV</li>
+          </ul>
+        </div>
+
+        <div class="func-card reveal-up delay-3">
+          <div class="fc-glow glow-purple"></div>
+          <div class="fc-icon purple"><i class="fa-solid fa-clock-rotate-left"></i></div>
+          <h3>Histórico de Análises</h3>
+          <ul>
+            <li><i class="fa-solid fa-check"></i> Comparação entre ciclos</li>
+            <li><i class="fa-solid fa-check"></i> Evolução da saúde do solo</li>
+            <li><i class="fa-solid fa-check"></i> Indicadores visuais de progresso</li>
+            <li><i class="fa-solid fa-check"></i> Linha do tempo interativa</li>
+          </ul>
+        </div>
+
+        <div class="func-card reveal-up delay-4">
+          <div class="fc-glow glow-cyan"></div>
+          <div class="fc-icon cyan"><i class="fa-brands fa-bluetooth"></i></div>
+          <h3>Integração Bluetooth</h3>
+          <ul>
+            <li><i class="fa-solid fa-check"></i> Recebimento automático de dados</li>
+            <li><i class="fa-solid fa-check"></i> Comunicação entre dispositivos</li>
+            <li><i class="fa-solid fa-check"></i> Sincronização em tempo real</li>
+            <li><i class="fa-solid fa-check"></i> Sem necessidade de internet</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ACESSIBILIDADE ===== -->
+  <section class="acessibilidade" id="acessibilidade">
+    <div class="container">
+      <div class="section-label reveal-up">INTERFACE & ACESSIBILIDADE</div>
+      <h2 class="section-title reveal-up delay-1">
+        Tecnologia acessível<br /><span class="accent">para todos</span>
+      </h2>
+      <p class="section-desc reveal-up delay-2">
+        O SoloVitAI traduz manuais técnicos da Embrapa em linguagem simples, 
+        ícones intuitivos e tutoriais visuais — para que qualquer produtor possa operar com confiança.
+      </p>
+
+      <div class="acess-layout">
+        <div class="acess-left reveal-left">
+          <div class="acess-step">
+            <div class="step-num">01</div>
+            <div class="step-content">
+              <h4>Linguagem Simples</h4>
+              <p>Dados técnicos transformados em frases do dia a dia. Sem jargões, sem complicações.</p>
+            </div>
+          </div>
+          <div class="acess-step">
+            <div class="step-num">02</div>
+            <div class="step-content">
+              <h4>Ícones Intuitivos</h4>
+              <p>Cada parâmetro representado visualmente. Mesmo sem ler, o produtor entende.</p>
+            </div>
+          </div>
+          <div class="acess-step">
+            <div class="step-num">03</div>
+            <div class="step-content">
+              <h4>Tutoriais Visuais</h4>
+              <p>Passo a passo ilustrado para cada ação — direto no aplicativo.</p>
+            </div>
+          </div>
+          <div class="acess-step">
+            <div class="step-num">04</div>
+            <div class="step-content">
+              <h4>IA como Guia</h4>
+              <p>O chatbot responde dúvidas em linguagem natural e orienta o produtor.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="acess-right reveal-right">
+          <!-- Mockup de tela do app -->
+          <div class="app-mockup">
+            <div class="mockup-phone">
+              <div class="phone-screen">
+                <div class="app-header">
+                  <span>SoloVitAI</span>
+                  <span class="app-signal"><i class="fa-solid fa-signal"></i></span>
+                </div>
+                <div class="app-greeting">Bom dia, João! 🌱</div>
+                <div class="app-status-card">
+                  <div class="app-icon-big"><i class="fa-solid fa-face-smile" style="color:#00ff88"></i></div>
+                  <div>
+                    <div class="app-status-title">Solo Saudável</div>
+                    <div class="app-status-sub">Tudo certo para plantar hoje</div>
+                  </div>
+                </div>
+                <div class="app-actions">
+                  <div class="app-action-btn">
+                    <i class="fa-solid fa-droplet"></i>
+                    <span>Umidade</span>
+                    <strong>72%</strong>
+                  </div>
+                  <div class="app-action-btn">
+                    <i class="fa-solid fa-sun"></i>
+                    <span>Temp.</span>
+                    <strong>24°C</strong>
+                  </div>
+                  <div class="app-action-btn">
+                    <i class="fa-solid fa-flask"></i>
+                    <span>pH</span>
+                    <strong>6.5</strong>
+                  </div>
+                </div>
+                <div class="app-tip">
+                  <i class="fa-solid fa-lightbulb"></i>
+                  <span>Dica: aplique potássio nos próximos 3 dias.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== DIDÁTICA POR IMAGENS ===== -->
+  <section class="didatica" id="didatica">
+    <div class="container">
+      <div class="section-label reveal-up">DIDÁTICA VISUAL</div>
+      <h2 class="section-title reveal-up delay-1">
+        Sem manuais.<br /><span class="accent">Só imagens.</span>
+      </h2>
+      <p class="section-desc reveal-up delay-2">
+        Qualquer produtor consegue operar o sistema. Nossas etapas são guiadas por ícones e imagens — intuitivas, inclusivas, simples.
+      </p>
+
+      <div class="didatica-steps">
+        <div class="did-step reveal-up delay-1">
+          <div class="did-icon"><i class="fa-solid fa-bluetooth"></i></div>
+          <div class="did-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+          <h4>Conectar Sensor</h4>
+          <p>Aproxime o sensor do solo. A conexão é automática via Bluetooth.</p>
+        </div>
+        <div class="did-step reveal-up delay-2">
+          <div class="did-icon"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+          <div class="did-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+          <h4>Dados Enviados</h4>
+          <p>As informações vão direto para o app em segundos, sem precisar digitar nada.</p>
+        </div>
+        <div class="did-step reveal-up delay-3">
+          <div class="did-icon"><i class="fa-solid fa-brain"></i></div>
+          <div class="did-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+          <h4>IA Analisa</h4>
+          <p>O sistema interpreta os dados automaticamente com inteligência artificial.</p>
+        </div>
+        <div class="did-step reveal-up delay-4">
+          <div class="did-icon"><i class="fa-solid fa-circle-check"></i></div>
+          <div class="did-arrow hidden"></div>
+          <h4>Você Decide</h4>
+          <p>Receba a recomendação em linguagem simples e aja com confiança.</p>
+        </div>
+      </div>
+
+      <!-- Banner de destaque -->
+      <div class="did-banner reveal-up delay-5">
+        <div class="banner-icon"><i class="fa-solid fa-star"></i></div>
+        <div class="banner-text">
+          <strong>Tecnologia que não exclui.</strong>
+          <span>O SoloVitAI foi desenhado para ser operado por qualquer pessoa, independentemente de escolaridade ou familiaridade com tecnologia.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CHATBOT ===== -->
+  <section class="chatbot-section" id="chatbot">
+    <div class="container">
+      <div class="section-label reveal-up">ASSISTENTE VIRTUAL</div>
+      <h2 class="section-title reveal-up delay-1">
+        Pergunte tudo<br /><span class="accent">ao SoloBot</span>
+      </h2>
+      <p class="section-desc reveal-up delay-2">
+        Consulte dados em tempo real, verifique condições, peça recomendações. 
+        Seu assistente agrícola inteligente, disponível 24h.
+      </p>
+
+      <div class="chat-layout">
+        <div class="chat-info reveal-left">
+          <div class="ci-card">
+            <i class="fa-solid fa-clock"></i>
+            <div>
+              <strong>Disponível 24/7</strong>
+              <span>Seu campo nunca dorme, seu assistente também não.</span>
+            </div>
+          </div>
+          <div class="ci-card">
+            <i class="fa-solid fa-language"></i>
+            <div>
+              <strong>Linguagem Natural</strong>
+              <span>Pergunte como se estivesse conversando com um agrônomo.</span>
+            </div>
+          </div>
+          <div class="ci-card">
+            <i class="fa-solid fa-database"></i>
+            <div>
+              <strong>Dados em Tempo Real</strong>
+              <span>Respostas baseadas nas leituras mais recentes dos seus sensores.</span>
+            </div>
+          </div>
+          <div class="ci-card">
+            <i class="fa-solid fa-shield-halved"></i>
+            <div>
+              <strong>Confiável & Seguro</strong>
+              <span>IA treinada com dados agronômicos certificados pela Embrapa.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interface de chat simulada -->
+        <div class="chat-window reveal-right">
+          <div class="chat-header">
+            <div class="chat-avatar"><i class="fa-solid fa-robot"></i></div>
+            <div class="chat-id">
+              <strong>SoloBot</strong>
+              <span class="chat-online"><span class="live-dot"></span>Online</span>
+            </div>
+          </div>
+          <div class="chat-messages" id="chat-messages">
+            <div class="msg bot">
+              <div class="msg-bubble">Olá! Sou o SoloBot. Como posso ajudar com sua lavoura hoje? 🌱</div>
+              <span class="msg-time">Agora</span>
+            </div>
+          </div>
+          <div class="chat-suggestions">
+            <button class="sugg-btn" onclick="sendSugg(this)">Qual a umidade do hectare 3?</button>
+            <button class="sugg-btn" onclick="sendSugg(this)">O solo está pronto para plantar?</button>
+            <button class="sugg-btn" onclick="sendSugg(this)">Qual nutriente está baixo?</button>
+          </div>
+          <div class="chat-input-area">
+            <input type="text" id="chat-input" placeholder="Pergunte sobre sua lavoura..." />
+            <button class="chat-send" id="chat-send"><i class="fa-solid fa-paper-plane"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== VISUALIZAÇÃO DE DADOS ===== -->
+  <section class="dados" id="dados">
+    <div class="container">
+      <div class="section-label reveal-up">VISUALIZAÇÃO DE DADOS</div>
+      <h2 class="section-title reveal-up delay-1">
+        Painéis <span class="accent">inteligentes</span><br />em tempo real
+      </h2>
+
+      <div class="dados-grid">
+        <!-- Gauge circular -->
+        <div class="dado-card reveal-up delay-1">
+          <h4>Saúde Geral do Solo</h4>
+          <div class="gauge-wrap">
+            <svg class="gauge-svg" viewBox="0 0 200 200">
+              <circle class="gauge-bg" cx="100" cy="100" r="80" fill="none" stroke="#1a2035" stroke-width="16"/>
+              <circle class="gauge-fill" cx="100" cy="100" r="80" fill="none" stroke="#00ff88" stroke-width="16"
+                stroke-dasharray="502" stroke-dashoffset="120" stroke-linecap="round"
+                transform="rotate(-90 100 100)"/>
+              <text x="100" y="95" text-anchor="middle" fill="#fff" font-size="32" font-weight="700" font-family="Orbitron">76</text>
+              <text x="100" y="120" text-anchor="middle" fill="#00ff88" font-size="13" font-family="Syne">de 100 pts</text>
+            </svg>
+          </div>
+          <span class="dado-label green">EXCELENTE</span>
+        </div>
+
+        <!-- Mini gráfico de barras -->
+        <div class="dado-card reveal-up delay-2">
+          <h4>Nutrientes por Hectare</h4>
+          <div class="bar-chart">
+            <div class="bc-row">
+              <span>N</span>
+              <div class="bc-bar"><div class="bc-fill" style="--w:82%; --c:#00ff88" data-val="82%"></div></div>
+            </div>
+            <div class="bc-row">
+              <span>P</span>
+              <div class="bc-bar"><div class="bc-fill" style="--w:60%; --c:#00cfff" data-val="60%"></div></div>
+            </div>
+            <div class="bc-row">
+              <span>K</span>
+              <div class="bc-bar"><div class="bc-fill" style="--w:38%; --c:#f59e0b" data-val="38%"></div></div>
+            </div>
+            <div class="bc-row">
+              <span>Ca</span>
+              <div class="bc-bar"><div class="bc-fill" style="--w:70%; --c:#a78bfa" data-val="70%"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Radar visual -->
+        <div class="dado-card reveal-up delay-3">
+          <h4>Condições do Ambiente</h4>
+          <div class="radar-wrap">
+            <svg class="radar-svg" viewBox="0 0 200 200">
+              <polygon points="100,20 180,65 180,135 100,180 20,135 20,65" fill="none" stroke="#1a2035" stroke-width="1"/>
+              <polygon points="100,45 157,72 157,127 100,154 43,127 43,72" fill="none" stroke="#1a2035" stroke-width="1"/>
+              <polygon points="100,70 134,85 134,115 100,130 66,115 66,85" fill="none" stroke="#1a2035" stroke-width="1"/>
+              <polygon class="radar-data" points="100,30 165,70 160,130 100,165 38,125 35,70" fill="rgba(0,255,136,0.15)" stroke="#00ff88" stroke-width="2"/>
+              <circle cx="100" cy="30" r="3" fill="#00ff88"/>
+              <circle cx="165" cy="70" r="3" fill="#00ff88"/>
+              <circle cx="160" cy="130" r="3" fill="#00ff88"/>
+              <circle cx="100" cy="165" r="3" fill="#00ff88"/>
+              <circle cx="38" cy="125" r="3" fill="#00ff88"/>
+              <circle cx="35" cy="70" r="3" fill="#00ff88"/>
+              <text x="100" y="14" text-anchor="middle" fill="#888" font-size="9" font-family="Syne">Umidade</text>
+              <text x="182" y="68" fill="#888" font-size="9" font-family="Syne">Temp.</text>
+              <text x="170" y="138" fill="#888" font-size="9" font-family="Syne">pH</text>
+              <text x="88" y="185" fill="#888" font-size="9" font-family="Syne">Nitrog.</text>
+              <text x="5" y="138" fill="#888" font-size="9" font-family="Syne">Fósforo</text>
+              <text x="8" y="68" fill="#888" font-size="9" font-family="Syne">Potás.</text>
+            </svg>
+          </div>
+        </div>
+
+        <!-- KPIs animados -->
+        <div class="dado-card reveal-up delay-4">
+          <h4>Métricas em Tempo Real</h4>
+          <div class="kpi-list">
+            <div class="kpi-item">
+              <span class="kpi-icon"><i class="fa-solid fa-droplet"></i></span>
+              <div>
+                <span class="kpi-metric-val">72<small>%</small></span>
+                <span class="kpi-metric-label">Umidade</span>
+              </div>
+              <span class="kpi-badge ok">OK</span>
+            </div>
+            <div class="kpi-item">
+              <span class="kpi-icon temp"><i class="fa-solid fa-temperature-three-quarters"></i></span>
+              <div>
+                <span class="kpi-metric-val">24<small>°C</small></span>
+                <span class="kpi-metric-label">Temperatura</span>
+              </div>
+              <span class="kpi-badge ok">OK</span>
+            </div>
+            <div class="kpi-item">
+              <span class="kpi-icon ph"><i class="fa-solid fa-flask"></i></span>
+              <div>
+                <span class="kpi-metric-val">6.5<small>pH</small></span>
+                <span class="kpi-metric-label">Acidez</span>
+              </div>
+              <span class="kpi-badge ok">OK</span>
+            </div>
+            <div class="kpi-item">
+              <span class="kpi-icon warn"><i class="fa-solid fa-triangle-exclamation"></i></span>
+              <div>
+                <span class="kpi-metric-val">38<small>%</small></span>
+                <span class="kpi-metric-label">Potássio</span>
+              </div>
+              <span class="kpi-badge warn">BAIXO</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TIMELINE ===== -->
+  <section class="timeline-sec" id="timeline">
+    <div class="container">
+      <div class="section-label reveal-up">JORNADA DO PROJETO</div>
+      <h2 class="section-title reveal-up delay-1">
+        Do conceito à<br /><span class="accent">realidade</span>
+      </h2>
+
+      <div class="timeline">
+        <div class="tl-item reveal-left">
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <span class="tl-date">Jan 2024</span>
+            <h4>Ideia Inicial</h4>
+            <p>Identificação do problema: produtores sem acesso a tecnologias acessíveis de análise de solo.</p>
+          </div>
+        </div>
+        <div class="tl-item right reveal-right">
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <span class="tl-date">Mar 2024</span>
+            <h4>Pesquisa & Design</h4>
+            <p>Pesquisa com produtores rurais, parceria com agrônomos e definição da arquitetura do sistema.</p>
+          </div>
+        </div>
+        <div class="tl-item reveal-left">
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <span class="tl-date">Jun 2024</span>
+            <h4>Desenvolvimento MVP</h4>
+            <p>Primeira versão do app com integração Bluetooth e leitura básica dos sensores de solo.</p>
+          </div>
+        </div>
+        <div class="tl-item right reveal-right">
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <span class="tl-date">Set 2024</span>
+            <h4>Testes em Campo</h4>
+            <p>Testes em lavouras reais com produtores voluntários. Refinamento da interface de acessibilidade.</p>
+          </div>
+        </div>
+        <div class="tl-item reveal-left">
+          <div class="tl-dot active"></div>
+          <div class="tl-content active">
+            <span class="tl-date">Mai 2026</span>
+            <h4>Integração IA & Chatbot</h4>
+            <p>Implementação do módulo de inteligência artificial e do assistente SoloBot.</p>
+          </div>
+        </div>
+        <div class="tl-item right reveal-right">
+          <div class="tl-dot future"></div>
+          <div class="tl-content future">
+            <span class="tl-date">2026 →</span>
+            <h4>Expansão & Escala</h4>
+            <p>Lançamento nacional, parceria com cooperativas agrícolas e expansão para novos cultivos.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EQUIPE ===== -->
+  <section class="equipe" id="equipe">
+    <div class="container">
+      <div class="section-label reveal-up">EQUIPE & PROJETO</div>
+      <h2 class="section-title reveal-up delay-1">
+        Quem está por<br /><span class="accent">trás do SoloVitAI</span>
+      </h2>
+
+      <div class="team-institution reveal-up delay-2">
+        <div class="inst-card">
+          <i class="fa-solid fa-graduation-cap"></i>
+          <div>
+            <strong>Projeto Acadêmico</strong>
+            <span>Desenvolvido como trabalho de conclusão de curso e feira tecnológica.</span>
+          </div>
+        </div>
+        <div class="inst-card">
+          <i class="fa-solid fa-microchip"></i>
+          <div>
+            <strong>Área: AgroTech & IA</strong>
+            <span>Tecnologia da Informação aplicada à Agricultura de Precisão.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-grid">
+        <div class="team-card reveal-up delay-1">
+          <div class="tc-avatar"><i class="fa-solid fa-user"></i></div>
+          <h4>Júlia</h4>
+          <span class="tc-role">Representante</span>
+          <div class="tc-skills">
+            <span>Lidera</span><span>Organização</span><span>Administra</span>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-glow"></div>
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <i class="fa-solid fa-seedling"></i>
+            <span>Solo<em>Vit</em>AI</span>
+          </div>
+          <p>Inteligência artificial transformando o manejo agrícola. Monitoramento inteligente, decisões simples.</p>
+          <div class="footer-social">
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="#"><i class="fa-brands fa-github"></i></a>
+            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <h5>Plataforma</h5>
+          <a href="#sobre">Sobre</a>
+          <a href="#plataforma">Aplicação</a>
+          <a href="#funcionalidades">Funcionalidades</a>
+          <a href="#chatbot">SoloBot</a>
+        </div>
+        <div class="footer-links">
+          <h5>Projeto</h5>
+          <a href="#acessibilidade">Acessibilidade</a>
+          <a href="#dados">Visualização</a>
+          <a href="#timeline">Timeline</a>
+          <a href="#equipe">Equipe</a>
+        </div>
+        <div class="footer-links">
+          <h5>Contato</h5>
+          <a href="#">contato@solovitai.com.br</a>
+          <a href="#">Apresentação PDF</a>
+          <a href="#">Repositório GitHub</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 SoloVitAI. Projeto Acadêmico — Todos os direitos reservados.</span>
+        <span class="footer-tag">Feito com <i class="fa-solid fa-heart"></i> para o campo</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
