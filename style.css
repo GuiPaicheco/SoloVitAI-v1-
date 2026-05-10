@@ -1427,6 +1427,7 @@ img { max-width: 100%; }
 }
 .team-card h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.3rem; font-family: var(--font-display); }
 .tc-role { font-size: 0.78rem; color: var(--green); font-family: var(--font-mono); display: block; margin-bottom: 1rem; }
+.tc-course { font-size: 0.78rem; color: var(--font-display); font-family: var(--font-mono); display: block; margin-bottom: 1rem; }
 .tc-ra { font-size: 0.75rem; color: var(--text-muted); font-family: var(--font-mono); display: block; margin-bottom: 1rem; }
 .tc-skills { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.4rem; }
 .tc-skills span {
