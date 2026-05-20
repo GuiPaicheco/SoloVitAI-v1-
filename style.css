@@ -1668,3 +1668,38 @@ img { max-width: 100%; }
   .metric-sep { width: 40px; height: 1px; }
 }
 
+/* ===== IMAGEM CENTRAL HERO ===== */
+.hero-center-image {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero-center-image img {
+  width: min(700px, 70vw);
+  height: auto;
+  object-fit: contain;
+
+  opacity: 0.95;
+
+  filter:
+    drop-shadow(0 0 30px rgba(0,255,136,0.35))
+    drop-shadow(0 0 80px rgba(0,255,136,0.15));
+
+  animation: floatTool 6s ease-in-out infinite;
+}
+
+/* Animação flutuando */
+@keyframes floatTool {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-18px);
+  }
+}
